@@ -1,0 +1,28 @@
+﻿@model List<Stock>
+
+@{
+    ViewData["Title"] = "Trading Floor";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Welcome to the stock trading page. Here are the current market listings:</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Ticker</th>
+            <th>Company Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr>
+                <td>@stock.Symbol</td>
+                <td>@stock.CompanyName</td>
+                <td>$@stock.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
