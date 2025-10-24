@@ -1,28 +1,126 @@
 ﻿@model List<Stock>
-
 @{
     ViewData["Title"] = "Trading Floor";
+    var recentHistory = ViewBag.RecentHistory as Dictionary<int, List<PriceHistory>>;
+    var percentageChanges = ViewBag.PercentageChanges as Dictionary<int, decimal>;
 }
 
 <h1>@ViewData["Title"]</h1>
-<p>Welcome to the stock trading page. Here are the current market listings:</p>
 
-<table class="table table-hover">
+<table class="table">
     <thead>
         <tr>
             <th>Ticker</th>
             <th>Company Name</th>
             <th>Price</th>
+            <th>Chart (Recent Trend)</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var stock in Model)
         {
             <tr>
-                <td>@stock.Symbol</td>
-                <td>@stock.CompanyName</td>
-                <td>$@stock.Price</td>
+                <td><a asp-action="Details" asp-route-id="@stock.Id">@stock.Ticker</a></td>
+                <td>
+                    @stock.CompanyName
+                    <span id="change-@stock.Id" class="@(percentageChanges.ContainsKey(stock.Id) && percentageChanges[stock.Id] >= 0 ? "text-success" : "text-danger")">
+                        (@(percentageChanges.ContainsKey(stock.Id) ? percentageChanges[stock.Id].ToString("F2") + "%" : "0.00%"))
+                    </span>
+                </td>
+                <td id="price-@stock.Id">@stock.Price.ToString("C")</td>
+                <td>
+                    <div style="width: 150px;">
+                        <a asp-action="Details" asp-route-id="@stock.Id">
+                            <canvas id="chart-@stock.Id" height="50"></canvas>
+                        </a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Store chart instances to update them later
+            const charts = {};
+            const allHistoryData = @Html.Raw(Json.Serialize(recentHistory));
+
+            // A reusable function to update a stock's price and chart
+            function updateStockData(stockId, newPrice, historyArray, percentChange) {
+                // Update the price text
+                const priceCell = document.getElementById('price-' + stockId);
+                if (priceCell) {
+                    priceCell.textContent = '$' + newPrice.toFixed(2);
+                }
+
+                // Update the percentage change text
+                const changeSpan = document.getElementById('change-' + stockId);
+                if (changeSpan) {
+                    changeSpan.textContent = `(${percentChange.toFixed(2)}%)`;
+                    changeSpan.className = percentChange >= 0 ? 'text-success' : 'text-danger';
+                }
+
+                // Update the chart
+                const chart = charts[stockId];
+                if (chart && historyArray) {
+                    const prices = historyArray.map(h => h.price);
+                    chart.data.datasets[0].data = prices;
+                    chart.data.datasets[0].borderColor = prices[prices.length - 1] >= prices[0] ? 'green' : 'red';
+                    chart.update('none');
+                }
+            }
+
+            @foreach (var stock in Model)
+            {
+                    <text>
+                        var stockId = @stock.Id;
+                        var canvas = document.getElementById('chart-' + stockId);
+                        var historyForStock = allHistoryData[stockId];
+
+                        if (canvas && historyForStock) {
+                            const prices = historyForStock.map(h => h.price);
+
+                            charts[stockId] = new Chart(canvas, {
+                                type: 'line',
+                                data: {
+                                    labels: Array(prices.length).fill(''),
+                                    datasets: [{
+                                        data: prices,
+                                        borderColor: prices[prices.length - 1] >= prices[0] ? 'green' : 'red',
+                                        borderWidth: 2,
+                                        pointRadius: 0,
+                                    }]
+                                },
+                                    options: {
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: { display: false },
+                                        tooltip: { enabled: false }
+                                    },
+                                    scales: {
+                                        x: { display: false },
+                                        y: { display: false }
+                                    }
+                                }
+                            });
+                        }
+                    </text>
+            }
+
+            // --- SignalR Connection for Live Updates ---
+            const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
+
+            connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {
+                updateStockData(stockId, newPrice, newHistory, percentChange);
+            });
+
+            connection.start().catch(function (err) {
+                return console.error(err.toString());
+            });
+        });
+    </script>
+}

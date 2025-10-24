@@ -15,6 +15,19 @@
             <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
         </form>
     </li>
+    if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Admin
+            </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" asp-controller="Trading" asp-action="AddStock">Add Stock</a></li>
+                <li><a class="dropdown-item" asp-controller="News" asp-action="AddNews">Add News Article</a></li>
+                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Settings">Site Settings</a></li>
+            </ul>
+        </li>
+    }
 }
 else
 {

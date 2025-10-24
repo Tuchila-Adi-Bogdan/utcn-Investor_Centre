@@ -1,0 +1,25 @@
+﻿@model List<NewsArticle>
+
+<h1>Financial News</h1>
+
+@foreach (var article in Model)
+{
+    <article class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">@article.Title</h5>
+            <p class="card-text">@article.Content</p>
+            <footer class="blockquote-footer">Published on @article.PublishedDate.ToShortDateString()</footer>
+
+            @if (article.Effects.Any())
+            {
+                <h6>Affected Stocks:</h6>
+                <ul>
+                    @foreach (var effect in article.Effects)
+                    {
+                        <li>@effect.Ticker: @effect.PriceChange.ToString("C")</li>
+                    }
+                </ul>
+            }
+        </div>
+    </article>
+}

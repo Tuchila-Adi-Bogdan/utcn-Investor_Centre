@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.Identity.Data;
+using WebApplication1.Models;
 
 namespace WebApplication1.Data;
 
@@ -11,7 +12,10 @@ public class WebApplication1Context : IdentityDbContext<InvestorCenterUser>
         : base(options)
     {
     }
-
+    public DbSet<Stock> Stocks { get; set; }
+    public DbSet<NewsArticle> NewsArticles { get; set; }
+    public DbSet<StockEffect> StockEffects { get; set; }
+    public DbSet<PriceHistory> PriceHistories { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

@@ -26,11 +26,7 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Investing()
-    {
-        return View();
-    }
-    public IActionResult TopMarkets()
+    public IActionResult News()
     {
         return View();
     }

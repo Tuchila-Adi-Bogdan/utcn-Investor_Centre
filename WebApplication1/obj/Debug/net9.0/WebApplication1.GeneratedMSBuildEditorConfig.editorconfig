@@ -56,24 +56,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Admin/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2V0dGluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Home/Investing.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbnZlc3RpbmcuY3NodG1s
+[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Home/News.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Home/TopMarkets.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUb3BNYXJrZXRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Home/Trading.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFkaW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/News/AddNews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xBZGROZXdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Shared/Error.cshtml]
@@ -90,6 +98,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Trading/AddStock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhZGluZ1xBZGRTdG9jay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Trading/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhZGluZ1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/adibo_s4utxbj/Documents/UTCN/An III 2025-2026/sem1/IS/proiect/WebApplication1/Views/Trading/Index.cshtml]

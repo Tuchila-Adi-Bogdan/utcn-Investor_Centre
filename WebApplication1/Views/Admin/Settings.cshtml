@@ -1,0 +1,24 @@
+﻿@model StockUpdateSettings
+@using WebApplication1.Services
+
+@{
+    ViewData["Title"] = "Admin Settings";
+}
+
+<h1>Admin Settings</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateSettings">
+            <div class="form-group mb-3">
+                <label asp-for="UpdateDelayMs" class="control-label">Update Interval (in milliseconds)</label>
+                <input asp-for="UpdateDelayMs" class="form-control" />
+                <span class="form-text text-muted">This controls how often stock prices update. 1000 = 1 second.</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

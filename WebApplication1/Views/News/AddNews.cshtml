@@ -1,0 +1,36 @@
+﻿@model NewsArticle
+
+@{
+    ViewData["Title"] = "Add News Article";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddNews">
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PublishedDate" class="control-label"></label>
+                <input asp-for="PublishedDate" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ThumbnailUrl" class="control-label">Thumbnail Image URL</label>
+                <input asp-for="ThumbnailUrl" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Publish" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

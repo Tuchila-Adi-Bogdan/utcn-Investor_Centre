@@ -1,0 +1,100 @@
+﻿@model List<PriceHistory>
+@{
+    var stock = ViewData["Stock"] as Stock;
+    ViewData["Title"] = $"{stock.CompanyName} ({stock.Ticker})";
+}
+
+<h1>@stock.CompanyName (@stock.Ticker)</h1>
+<h3>Current Price: <span id="current-price">@stock.Price.ToString("C")</span></h3>
+
+<div class="mb-2">
+    <button class="btn btn-outline-primary btn-sm" data-range="1min">1min</button>
+    <button class="btn btn-outline-primary btn-sm" data-range="5min">5min</button>
+    <button class="btn btn-outline-primary btn-sm" data-range="10min">10min</button>
+    <button class="btn btn-outline-primary btn-sm" data-range="1hour">1hour</button>
+    <button class="btn btn-outline-primary btn-sm" data-range="1day">1day</button>
+    <button class="btn btn-outline-primary btn-sm" data-range="1week">1week</button>
+    <button class="btn btn-outline-primary btn-sm" data-range="1month">1month</button>
+</div>
+
+<div>
+    <canvas id="priceChart"></canvas>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+
+        let priceChart;
+        const currentPageStockId = @stock.Id;
+        let currentRange = "1min";
+
+        async function fetchAndUpdateChart(stockId, range) {
+            currentRange = range; // Set the current range
+            const response = await fetch(`/Trading/GetHistoryData?stockId=${stockId}&range=${range}`);
+            const data = await response.json();
+
+            if (priceChart) {
+                // Update the chart with the new data
+                priceChart.data.labels = data.map(h => new Date(h.timestamp).toLocaleString());
+                priceChart.data.datasets[0].data = data.map(h => h.price);
+                priceChart.update();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById('priceChart');
+
+        document.querySelectorAll("button[data-range]").forEach(button => {
+                button.addEventListener("click", function() {
+                    fetchAndUpdateChart(currentPageStockId, this.dataset.range);
+                });
+            });
+
+        const historyData = @Html.Raw(Json.Serialize(Model.Select(h => h.Price)));
+        const historyLabels = @Html.Raw(Json.Serialize(Model.Select(h => new DateTime(h.Timestamp.Ticks).ToLocalTime().ToShortTimeString())));
+
+        priceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: historyLabels,
+                datasets: [{
+                    label: 'Price (USD)',
+                    data: historyData,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+        const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
+
+            connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {
+                if (stockId === currentPageStockId) {
+
+                    const priceHeader = document.getElementById('current-price');
+                    if (priceHeader) {
+                        priceHeader.textContent = '$' + newPrice.toFixed(2);
+                    }
+
+                    if (priceChart && currentRange === "1min") {
+                        priceChart.data.labels = newHistory.map(h => new Date(h.timestamp).toLocaleTimeString());
+                        priceChart.data.datasets[0].data = newHistory.map(h => h.price);
+                        priceChart.update();
+                    }
+                }
+            });
+
+            connection.start().catch(function (err) {
+                return console.error(err.toString());
+            });
+        });
+    </script>
+}
