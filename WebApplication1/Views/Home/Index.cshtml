@@ -1,8 +1,152 @@
-﻿@{
+﻿@using WebApplication1.ViewModels
+@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
+    var recentHistory = ViewBag.RecentHistory as Dictionary<int, List<PriceHistory>>;
+    var percentageChanges = ViewBag.PercentageChanges as Dictionary<int, decimal>;
 }
 
+<style>
+    .carousel-item-content {
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        background-color: #ffffff;
+        border-radius: 8px;
+    }
+
+        .carousel-item-content h3 {
+            font-weight: bold;
+        }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #555;
+        border-radius: 5px;
+    }
+
+    .carousel-indicators button {
+        background-color: #555;
+    }
+
+    .news-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-card-img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .news-card-body {
+        flex-grow: 1;
+    }
+</style>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome to @ViewData["SiteTitle"]</h1>
-    <p>subtitlu.</p>
+    <h1 class="display-4">Welcome to InvestorCenter</h1>
+    <p>The latest on your favorite stocks.</p>
 </div>
+
+<hr />
+
+<div id="stockCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @foreach (var s in Model.Stocks.Select((s, index) => new { Stock = s, Index = index }))
+        {
+            <div class="carousel-item @(s.Index == 0 ? "active" : "")">
+                <div class="carousel-item-content">
+                    <h3>
+                        @s.Stock.Ticker
+                        <span id="change-@s.Stock.Id" class="@(percentageChanges != null && percentageChanges.ContainsKey(s.Stock.Id) && percentageChanges[s.Stock.Id] >= 0 ? "text-success" : "text-danger")">
+                            (@(percentageChanges != null && percentageChanges.ContainsKey(s.Stock.Id) ? percentageChanges[s.Stock.Id].ToString("F2") + "%" : "0.00%"))
+                        </span>
+                    </h3>
+                    <p>@s.Stock.CompanyName</p>
+                    <h4><span id="price-@s.Stock.Id">@s.Stock.Price.ToString("C")</span></h4>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#stockCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#stockCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+<hr />
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Latest News</h2>
+    <div class="row">
+        @foreach (var article in Model.NewsArticles)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card news-card">
+                    @if (!string.IsNullOrEmpty(article.ThumbnailUrl))
+                    {
+                        <img src="@article.ThumbnailUrl" class="card-img-top news-card-img" alt="@article.Title">
+                    }
+                    <div class="card-body news-card-body">
+                        <h5 class="card-title">@article.Title</h5>
+                        <p class="card-text">
+                            @* Truncate content to 100 characters *@
+                            @(article.Content.Length > 100 ? article.Content.Substring(0, 100) + "..." : article.Content)
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Published on @article.PublishedDate.ToShortDateString()</small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const charts = {};
+            const allHistoryData = @Html.Raw(Json.Serialize(recentHistory));
+
+            function updateStockData(stockId, newPrice, historyArray, percentChange) {
+                // Update the price text
+                const priceCell = document.getElementById('price-' + stockId);
+                if (priceCell) {
+                    priceCell.textContent = '$' + newPrice.toFixed(2);
+                }
+
+                // Update the percentage change text
+                const changeSpan = document.getElementById('change-' + stockId);
+                if (changeSpan) {
+                    changeSpan.textContent = `(${percentChange.toFixed(2)}%)`;
+                    changeSpan.className = percentChange >= 0 ? 'text-success' : 'text-danger';
+                }
+            }
+
+            const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
+
+            connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {
+                updateStockData(stockId, newPrice, newHistory, percentChange);
+            });
+
+            connection.start().catch(function (err) {
+                return console.error(err.toString());
+            });
+        });
+    </script>
+}

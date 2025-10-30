@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "My Wallet";
+}
+
+<h1 class="display-4">My Wallet</h1>
+
+<h2 class="mt-4">Current Balance: @ViewBag.Balance.ToString("C", new System.Globalization.CultureInfo("en-US"))</h2>
+
+<hr />
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Money</h5>
+                <p class="card-text">Add funds to your account.</p>
+                <form asp-action="AddMoney" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="number" name="amount" class="form-control" placeholder="0.00" step="0.01" min="0.01" required>
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Withdraw Money</h5>
+                <p class="card-text">Withdraw funds from your account.</p>
+                <form asp-action="WithdrawMoney" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="number" name="amount" class="form-control" placeholder="0.00" step="0.01" min="0.01" required>
+                        <button type="submit" class="btn btn-danger">Withdraw</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

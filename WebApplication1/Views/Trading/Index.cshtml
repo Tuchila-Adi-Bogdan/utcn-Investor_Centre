@@ -45,11 +45,9 @@
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Store chart instances to update them later
             const charts = {};
             const allHistoryData = @Html.Raw(Json.Serialize(recentHistory));
 
-            // A reusable function to update a stock's price and chart
             function updateStockData(stockId, newPrice, historyArray, percentChange) {
                 // Update the price text
                 const priceCell = document.getElementById('price-' + stockId);
@@ -111,7 +109,6 @@
                     </text>
             }
 
-            // --- SignalR Connection for Live Updates ---
             const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
 
             connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {

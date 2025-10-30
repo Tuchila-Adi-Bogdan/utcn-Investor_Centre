@@ -9,5 +9,6 @@ namespace WebApplication1.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the InvestorCenterUser class
 public class InvestorCenterUser : IdentityUser
 {
+    public decimal Balance { get; set; }
 }
 
