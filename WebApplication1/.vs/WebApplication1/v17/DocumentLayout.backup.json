@@ -3,28 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\trading\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\trading\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\trading\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\trading\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\services\\stockupdatesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:services\\stockupdatesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\areas\\identity\\data\\investorcenteruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:areas\\identity\\data\\investorcenteruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\wallet\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\wallet\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Migrations\\20251029100650_UserUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251029100650_UserUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\services\\stockupdatesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:services\\stockupdatesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\areas\\identity\\data\\investorcenteruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:areas\\identity\\data\\investorcenteruser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\areas\\identity\\data\\webapplication1context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\tradingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\tradingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Migrations\\20251029100510_AddBalanceAndNameToUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251029100510_AddBalanceAndNameToUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\models\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,16 +83,8 @@
       "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\portfolio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\trading\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\trading\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,6 +97,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\migrations\\20251029100510_addbalanceandnametouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:migrations\\20251029100510_addbalanceandnametouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|c:\\users\\adibo_s4utxbj\\documents\\utcn\\an iii 2025-2026\\sem1\\is\\proiect\\webapplication1\\migrations\\20251029100650_userupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95007823-2349-4D58-84DD-748FAE254B84}|WebApplication1.csproj|solutionrelative:migrations\\20251029100650_userupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -102,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -111,58 +123,42 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StockUpdateSettings.cs",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Services\\StockUpdateSettings.cs",
-              "RelativeDocumentMoniker": "Services\\StockUpdateSettings.cs",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Services\\StockUpdateSettings.cs",
-              "RelativeToolTip": "Services\\StockUpdateSettings.cs",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T10:34:58.818Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "WebApplication1Context.cs",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\WebApplication1Context.cs",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Data\\WebApplication1Context.cs",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\WebApplication1Context.cs",
-              "RelativeToolTip": "Areas\\Identity\\Data\\WebApplication1Context.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T10:01:20.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InvestorCenterUser.cs",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\InvestorCenterUser.cs",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Data\\InvestorCenterUser.cs",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\InvestorCenterUser.cs",
-              "RelativeToolTip": "Areas\\Identity\\Data\\InvestorCenterUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T10:00:46.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-02T13:22:02.069Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "WalletController.cs",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\WalletController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WalletController.cs",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\WalletController.cs",
-              "RelativeToolTip": "Controllers\\WalletController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAgwBAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:55:37.914Z",
-              "EditorCaption": ""
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Trading\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Trading\\Index.cshtml",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Trading\\Index.cshtml",
+              "RelativeToolTip": "Views\\Trading\\Index.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-02T13:19:22.701Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T09:08:19.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Wallet\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Wallet\\Index.cshtml",
@@ -170,25 +166,96 @@
               "RelativeToolTip": "Views\\Wallet\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:53:59.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:53:59.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-29T09:48:45.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Trading\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Trading\\Details.cshtml",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Trading\\Details.cshtml",
+              "RelativeToolTip": "Views\\Trading\\Details.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-29T09:39:00.167Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_LoginPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_LoginPartial.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_LoginPartial.cshtml*",
-              "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:48:45.335Z",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T18:57:05.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WalletController.cs",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\WalletController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WalletController.cs",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\WalletController.cs",
+              "RelativeToolTip": "Controllers\\WalletController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwBAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T09:55:37.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "InvestorCenterUser.cs",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\InvestorCenterUser.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Data\\InvestorCenterUser.cs",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\InvestorCenterUser.cs",
+              "RelativeToolTip": "Areas\\Identity\\Data\\InvestorCenterUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T10:00:46.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "WebApplication1Context.cs",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\WebApplication1Context.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Data\\WebApplication1Context.cs",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Areas\\Identity\\Data\\WebApplication1Context.cs",
+              "RelativeToolTip": "Areas\\Identity\\Data\\WebApplication1Context.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T10:01:20.958Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "StockUpdateSettings.cs",
+              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Services\\StockUpdateSettings.cs",
+              "RelativeDocumentMoniker": "Services\\StockUpdateSettings.cs",
+              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Services\\StockUpdateSettings.cs",
+              "RelativeToolTip": "Services\\StockUpdateSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T10:34:58.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "20251029100510_AddBalanceAndNameToUser.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Migrations\\20251029100510_AddBalanceAndNameToUser.cs",
               "RelativeDocumentMoniker": "Migrations\\20251029100510_AddBalanceAndNameToUser.cs",
@@ -196,12 +263,11 @@
               "RelativeToolTip": "Migrations\\20251029100510_AddBalanceAndNameToUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T10:05:10.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:05:10.448Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 25,
               "Title": "20251029100650_UserUpdate.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Migrations\\20251029100650_UserUpdate.cs",
               "RelativeDocumentMoniker": "Migrations\\20251029100650_UserUpdate.cs",
@@ -209,12 +275,11 @@
               "RelativeToolTip": "Migrations\\20251029100650_UserUpdate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T10:06:50.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:06:50.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Stock.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Models\\Stock.cs",
               "RelativeDocumentMoniker": "Models\\Stock.cs",
@@ -222,12 +287,11 @@
               "RelativeToolTip": "Models\\Stock.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T10:01:10.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:01:10.985Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "TradingController.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\TradingController.cs",
               "RelativeDocumentMoniker": "Controllers\\TradingController.cs",
@@ -235,12 +299,11 @@
               "RelativeToolTip": "Controllers\\TradingController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAYwCEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:04:07.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:04:07.364Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
@@ -248,12 +311,11 @@
               "RelativeToolTip": "Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T10:00:22.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:00:22.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
@@ -261,12 +323,11 @@
               "RelativeToolTip": "Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T10:00:21.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:00:21.923Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "Settings.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Admin\\Settings.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Settings.cshtml",
@@ -274,12 +335,11 @@
               "RelativeToolTip": "Views\\Admin\\Settings.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T10:00:10.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:00:10.387Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "PortfolioController.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\PortfolioController.cs",
               "RelativeDocumentMoniker": "Controllers\\PortfolioController.cs",
@@ -287,12 +347,11 @@
               "RelativeToolTip": "Controllers\\PortfolioController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:55:24.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:55:24.178Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Portfolio\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Portfolio\\Index.cshtml",
@@ -300,12 +359,11 @@
               "RelativeToolTip": "Views\\Portfolio\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:53:29.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:53:29.881Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
@@ -313,12 +371,11 @@
               "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:54:23.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:54:23.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "_Navbar.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Shared\\_Navbar.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Navbar.cshtml",
@@ -326,25 +383,11 @@
               "RelativeToolTip": "Views\\Shared\\_Navbar.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:51:21.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:51:21.117Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Trading\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\Trading\\Details.cshtml",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Trading\\Details.cshtml",
-              "RelativeToolTip": "Views\\Trading\\Details.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:39:00.167Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "HomeViewModel.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\ViewModels\\HomeViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\HomeViewModel.cs",
@@ -352,12 +395,11 @@
               "RelativeToolTip": "ViewModels\\HomeViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:05:57.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:05:57.348Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "NewsController.cs",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\NewsController.cs",
               "RelativeDocumentMoniker": "Controllers\\NewsController.cs",
@@ -365,12 +407,11 @@
               "RelativeToolTip": "Controllers\\NewsController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:02:32.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:02:32.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\News\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\News\\Index.cshtml",
@@ -378,12 +419,11 @@
               "RelativeToolTip": "Views\\News\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:01:38.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:01:38.001Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -391,21 +431,7 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAADQAAAAAAAAAAAAAAD0AAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T08:23:19.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T18:57:05.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T08:23:19.116Z"
             }
           ]
         }
