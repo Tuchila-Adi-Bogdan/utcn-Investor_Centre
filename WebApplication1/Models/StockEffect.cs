@@ -9,4 +9,5 @@
         // Foreign key to link back to the news article
         public int NewsArticleId { get; set; }
     }
+
 }

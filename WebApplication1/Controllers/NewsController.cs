@@ -35,9 +35,20 @@ namespace WebApplication1.Controllers
                 //newArticle.PublishedDate = DateTime.UtcNow;
                 _context.NewsArticles.Add(newArticle);
                 _context.SaveChanges();
+                //parseForEffects(newArticle);
                 return RedirectToAction("Index");
             }
             return View(newArticle);
+        }
+
+        public void parseForEffects(NewsArticle article)
+        {
+            StockEffect effect = new StockEffect();
+            effect.NewsArticleId = article.Id;
+
+            _context.StockEffects.Add(effect);
+            _context.SaveChanges();
+
         }
 
     }
