@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Hubs;
-using WebApplication1.Models;
-using WebApplication1.Services;
+using InvestorCenter.Data;
+using InvestorCenter.Hubs;
+using InvestorCenter.Models;
+using InvestorCenter.Services;
 
 public class StockPriceService : BackgroundService
 {
@@ -24,7 +24,7 @@ public class StockPriceService : BackgroundService
         {
             using (var scope = _serviceProvider.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<WebApplication1Context>();
+                var context = scope.ServiceProvider.GetRequiredService<InvestorCenterContext>();
                 var stocks = await context.Stocks.ToListAsync(stoppingToken);
                 var random = new Random();
 

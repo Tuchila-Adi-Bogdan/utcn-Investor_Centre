@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace WebApplication1.Hubs
+namespace InvestorCenter.Hubs
 {
     public class StockHub : Hub
     {

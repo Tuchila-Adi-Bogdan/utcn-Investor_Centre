@@ -2,17 +2,17 @@ using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using WebApplication1.Data;
-using WebApplication1.ViewModels;
+using InvestorCenter.Data;
+using InvestorCenter.ViewModels;
 
-namespace WebApplication1.Controllers;
+namespace InvestorCenter.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly WebApplication1Context _context;
+    private readonly InvestorCenterContext _context;
 
-    public HomeController(ILogger<HomeController> logger, WebApplication1Context context)
+    public HomeController(ILogger<HomeController> logger, InvestorCenterContext context)
     {
         _logger = logger;
         _context = context;

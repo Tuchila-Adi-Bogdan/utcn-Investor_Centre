@@ -3,14 +3,14 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using InvestorCenter.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace InvestorCenter.Migrations
 {
-    [DbContext(typeof(WebApplication1Context))]
-    partial class WebApplication1ContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(InvestorCenterContext))]
+    partial class InvestorCenterContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -149,7 +149,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebApplication1.Areas.Identity.Data.InvestorCenterUser", b =>
+            modelBuilder.Entity("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -216,7 +216,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.NewsArticle", b =>
+            modelBuilder.Entity("InvestorCenter.Models.NewsArticle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -241,7 +241,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("NewsArticles");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.PriceHistory", b =>
+            modelBuilder.Entity("InvestorCenter.Models.PriceHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -261,7 +261,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("PriceHistories");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Stock", b =>
+            modelBuilder.Entity("InvestorCenter.Models.Stock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -283,7 +283,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("Stocks");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.StockEffect", b =>
+            modelBuilder.Entity("InvestorCenter.Models.StockEffect", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -317,7 +317,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -326,7 +326,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -341,7 +341,7 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -350,23 +350,23 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.StockEffect", b =>
+            modelBuilder.Entity("InvestorCenter.Models.StockEffect", b =>
                 {
-                    b.HasOne("WebApplication1.Models.NewsArticle", null)
+                    b.HasOne("InvestorCenter.Models.NewsArticle", null)
                         .WithMany("Effects")
                         .HasForeignKey("NewsArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.NewsArticle", b =>
+            modelBuilder.Entity("InvestorCenter.Models.NewsArticle", b =>
                 {
                     b.Navigation("Effects");
                 });

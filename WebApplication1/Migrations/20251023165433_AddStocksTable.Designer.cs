@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using InvestorCenter.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace InvestorCenter.Migrations
 {
-    [DbContext(typeof(WebApplication1Context))]
+    [DbContext(typeof(InvestorCenterContext))]
     [Migration("20251023165433_AddStocksTable")]
     partial class AddStocksTable
     {
@@ -152,7 +152,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebApplication1.Areas.Identity.Data.InvestorCenterUser", b =>
+            modelBuilder.Entity("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -216,7 +216,7 @@ namespace WebApplication1.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Stock", b =>
+            modelBuilder.Entity("InvestorCenter.Models.Stock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -249,7 +249,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -258,7 +258,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -273,7 +273,7 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -282,7 +282,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebApplication1.Areas.Identity.Data.InvestorCenterUser", null)
+                    b.HasOne("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,6 +1,6 @@
-﻿using WebApplication1.Services;
+﻿using InvestorCenter.Services;
 
-namespace WebApplication1.Services
+namespace InvestorCenter.Services
 {
     public class StockUpdateSettings
     {

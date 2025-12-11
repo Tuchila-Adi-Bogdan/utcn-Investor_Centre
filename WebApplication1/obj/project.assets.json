@@ -8429,9 +8429,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\InvestorCenter.csproj",
+      "projectName": "InvestorCenter",
+      "projectPath": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\InvestorCenter.csproj",
       "packagesPath": "C:\\Users\\adibo_s4utxbj\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",

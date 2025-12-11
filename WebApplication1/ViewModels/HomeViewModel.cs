@@ -1,6 +1,6 @@
-﻿using WebApplication1.Models;
+﻿using InvestorCenter.Models;
 
-namespace WebApplication1.ViewModels
+namespace InvestorCenter.ViewModels
 {
     public class HomeViewModel
     {

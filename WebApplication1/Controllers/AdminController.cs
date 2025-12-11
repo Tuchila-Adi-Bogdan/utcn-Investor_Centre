@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Services;
+using InvestorCenter.Services;
 
-namespace WebApplication1.Controllers
+namespace InvestorCenter.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller

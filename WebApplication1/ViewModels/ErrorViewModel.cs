@@ -1,4 +1,4 @@
-namespace WebApplication1.ViewModels
+namespace InvestorCenter.ViewModels
 {
     public class ErrorViewModel
     {

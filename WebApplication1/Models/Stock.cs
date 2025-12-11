@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Models
+﻿namespace InvestorCenter.Models
 {
     public class Stock
     {

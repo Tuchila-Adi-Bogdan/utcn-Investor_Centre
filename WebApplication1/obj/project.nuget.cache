@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4SqFbg40QQg=",
+  "dgSpecHash": "0xwal6pNXi0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "C:\\Users\\adibo_s4utxbj\\Documents\\UTCN\\An III 2025-2026\\sem1\\IS\\proiect\\WebApplication1\\InvestorCenter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adibo_s4utxbj\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\adibo_s4utxbj\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

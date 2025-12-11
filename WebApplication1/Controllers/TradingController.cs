@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using InvestorCenter.Data;
+using InvestorCenter.Models;
 
-namespace WebApplication1.Controllers
+namespace InvestorCenter.Controllers
 {
     public class TradingController : Controller
     {
-        private readonly WebApplication1Context _context;
+        private readonly InvestorCenterContext _context;
 
-        public TradingController(WebApplication1Context context)
+        public TradingController(InvestorCenterContext context)
         {
             _context = context;
         }

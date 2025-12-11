@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using WebApplication1.Areas.Identity.Data;
+using InvestorCenter.Areas.Identity.Data;
 
 [Authorize] // Ensures only logged-in users can access this
 public class WalletController : Controller

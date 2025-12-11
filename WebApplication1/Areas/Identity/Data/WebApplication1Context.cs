@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Areas.Identity.Data;
-using WebApplication1.Models;
+using InvestorCenter.Areas.Identity.Data;
+using InvestorCenter.Models;
 
-namespace WebApplication1.Data;
+namespace InvestorCenter.Data;
 
-public class WebApplication1Context : IdentityDbContext<InvestorCenterUser>
+public class InvestorCenterContext : IdentityDbContext<InvestorCenterUser>
 {
-    public WebApplication1Context(DbContextOptions<WebApplication1Context> options)
+    public InvestorCenterContext(DbContextOptions<InvestorCenterContext> options)
         : base(options)
     {
     }

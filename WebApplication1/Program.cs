@@ -1,18 +1,18 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Areas.Identity.Data;
-using WebApplication1.Data;
-using WebApplication1.Hubs;
-using WebApplication1.Services;
+using InvestorCenter.Areas.Identity.Data;
+using InvestorCenter.Data;
+using InvestorCenter.Hubs;
+using InvestorCenter.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-//var connectionString = builder.Configuration.GetConnectionString("WebApplication1ContextConnection") ?? throw new InvalidOperationException("Connection string 'WebApplication1ContextConnection' not found.");;
-var connectionString = "Data Source=WebApplication1.db";
-builder.Services.AddDbContext<WebApplication1Context>(options => options.UseSqlite(connectionString));
+//var connectionString = builder.Configuration.GetConnectionString("InvestorCenterContextConnection") ?? throw new InvalidOperationException("Connection string 'InvestorCenterContextConnection' not found.");;
+var connectionString = "Data Source=InvestorCenter.db";
+builder.Services.AddDbContext<InvestorCenterContext>(options => options.UseSqlite(connectionString));
 
 builder.Services.AddDefaultIdentity<InvestorCenterUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<WebApplication1Context>();
+    .AddEntityFrameworkStores<InvestorCenterContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

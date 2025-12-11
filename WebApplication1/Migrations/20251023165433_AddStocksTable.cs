@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace InvestorCenter.Migrations
 {
     /// <inheritdoc />
     public partial class AddStocksTable : Migration
