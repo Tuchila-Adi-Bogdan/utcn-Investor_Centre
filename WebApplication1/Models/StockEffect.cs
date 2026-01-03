@@ -8,6 +8,8 @@
 
         // Foreign key to link back to the news article
         public int NewsArticleId { get; set; }
+
+        public DateTime ExpirationDate { get; set; }
     }
 
 }

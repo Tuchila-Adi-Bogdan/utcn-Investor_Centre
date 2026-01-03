@@ -42,29 +42,11 @@ namespace InvestorCenter.Controllers
             return View(newArticle);
         }
 
-        //public void parseForEffects(NewsArticle article)
-        //{
-        //    StockEffect effect = new StockEffect();
-        //    effect.NewsArticleId = article.Id;
-        //    //parse the title
-        //    foreach(var s in article.Title)
-        //    {
-        //        if()
-        //        {
-
-        //        }
-        //    }
-
-        //    _context.StockEffects.Add(effect);
-        //    _context.SaveChanges();
-
-        //}
-
         public void parseForEffects(NewsArticle article)
         {
             if (article == null) return;
 
-            // Load stocks into memory for efficient matching (adjust if you expect very large sets)
+            // Load stocks into memory for efficient matching
             var stocks = _context.Stocks.ToList();
             if (!stocks.Any()) return;
 
@@ -114,8 +96,10 @@ namespace InvestorCenter.Controllers
                 {
                     NewsArticleId = article.Id,
                     Ticker = t,
-                    PriceChange = ((decimal)random.NextDouble()*200)
-                }).ToList();
+                    PriceChange = ((decimal)random.NextDouble() * 4) - 2,
+
+                    ExpirationDate = DateTime.UtcNow.AddMinutes(5)
+    }).ToList();
 
             if (newEffects.Any())
             {

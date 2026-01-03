@@ -61,10 +61,22 @@ using (var scope = app.Services.CreateScope())
         await roleManager.CreateAsync(new IdentityRole("Admin"));
     }
 
-    // Find your user by email and assign them the "Admin" role
-    var adminUser = await userManager.FindByEmailAsync("adibogdan2004@gmail.com");
-    if (adminUser != null && !await userManager.IsInRoleAsync(adminUser, "Admin"))
+    // Admin user
+    var adminEmail = "adibogdan2004@gmail.com";
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+
+    if (adminUser == null)
     {
+        adminUser = new InvestorCenterUser
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true
+        };
+
+        await userManager.CreateAsync(adminUser, "Password123!");
+
+        //Assign the role
         await userManager.AddToRoleAsync(adminUser, "Admin");
     }
 }

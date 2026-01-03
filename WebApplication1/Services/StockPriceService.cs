@@ -28,10 +28,27 @@ public class StockPriceService : BackgroundService
                 var stocks = await context.Stocks.ToListAsync(stoppingToken);
                 var random = new Random();
 
+                // FETCH ACTIVE EFFECTS
+                // Get all effects that have NOT expired yet.
+                // AsNoTracking is faster for read-only data.
+                var activeEffects = await context.StockEffects
+                    .AsNoTracking()
+                    .Where(e => e.ExpirationDate > DateTime.UtcNow)
+                    .ToListAsync(stoppingToken);
+
                 foreach (var stock in stocks)
                 {
-                    var changePercent = (decimal)(random.NextDouble() * 0.02 - 0.01);
+                    var changePercent = (decimal)(random.NextDouble() * 0.1 - 0.05);
+
+                    var effect = activeEffects.FirstOrDefault(e => e.Ticker == stock.Ticker);
+                    if (effect != null)
+                    {
+                        changePercent += (effect.PriceChange / 100m);
+                    }
+
                     stock.Price += stock.Price * changePercent;
+
+                    if (stock.Price < 0.01m) stock.Price = 0.01m;
 
                     var historyRecord = new PriceHistory
                     {
