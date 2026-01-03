@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using InvestorCenter.Data;
+using InvestorCenter.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using InvestorCenter.Data;
-using InvestorCenter.Models;
+using System.Text.RegularExpressions;
 
 namespace InvestorCenter.Controllers
 {
@@ -32,23 +33,95 @@ namespace InvestorCenter.Controllers
         {
             if (ModelState.IsValid)
             {
-                //newArticle.PublishedDate = DateTime.UtcNow;
+                newArticle.PublishedDate = DateTime.UtcNow;
                 _context.NewsArticles.Add(newArticle);
                 _context.SaveChanges();
-                //parseForEffects(newArticle);
+                parseForEffects(newArticle);
                 return RedirectToAction("Index");
             }
             return View(newArticle);
         }
 
+        //public void parseForEffects(NewsArticle article)
+        //{
+        //    StockEffect effect = new StockEffect();
+        //    effect.NewsArticleId = article.Id;
+        //    //parse the title
+        //    foreach(var s in article.Title)
+        //    {
+        //        if()
+        //        {
+
+        //        }
+        //    }
+
+        //    _context.StockEffects.Add(effect);
+        //    _context.SaveChanges();
+
+        //}
+
         public void parseForEffects(NewsArticle article)
         {
-            StockEffect effect = new StockEffect();
-            effect.NewsArticleId = article.Id;
+            if (article == null) return;
 
-            _context.StockEffects.Add(effect);
-            _context.SaveChanges();
+            // Load stocks into memory for efficient matching (adjust if you expect very large sets)
+            var stocks = _context.Stocks.ToList();
+            if (!stocks.Any()) return;
 
+            var text = $"{article.Title} {article.Content}";
+
+            // Extract candidate tokens (simple heuristic: alphanumeric, ., - up to length 6)
+            var tokenMatches = Regex.Matches(text, @"\b[A-Za-z0-9\.\-]{1,6}\b");
+            var tokens = tokenMatches.Select(m => m.Value.Trim()).Where(t => !string.IsNullOrWhiteSpace(t))
+                                     .Select(t => t.ToUpperInvariant()).Distinct().ToList();
+
+            // Prepare fast lookup by ticker
+            var tickerLookup = stocks.Where(s => !string.IsNullOrWhiteSpace(s.Ticker))
+                                     .ToDictionary(s => s.Ticker.ToUpperInvariant(), s => s);
+
+            var foundTickers = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            // Match tokens against tickers
+            foreach (var tok in tokens)
+            {
+                if (tickerLookup.TryGetValue(tok, out var stock))
+                {
+                    foundTickers.Add(stock.Ticker);
+                }
+            }
+
+            // Also check company names (case-insensitive substring match)
+            foreach (var stock in stocks)
+            {
+                if (string.IsNullOrWhiteSpace(stock.CompanyName)) continue;
+                if (text.IndexOf(stock.CompanyName, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    foundTickers.Add(stock.Ticker);
+                }
+            }
+
+            // Create StockEffect records for each found ticker if not already present for this article
+            var existingEffectsForArticle = _context.StockEffects
+                                                    .Where(e => e.NewsArticleId == article.Id)
+                                                    .Select(e => e.Ticker)
+                                                    .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+            Random random = new Random();
+
+            var newEffects = foundTickers
+                .Where(t => !existingEffectsForArticle.Contains(t))
+                .Select(t => new StockEffect
+                {
+                    NewsArticleId = article.Id,
+                    Ticker = t,
+                    PriceChange = ((decimal)random.NextDouble()*200)
+                }).ToList();
+
+            if (newEffects.Any())
+            {
+                _context.StockEffects.AddRange(newEffects);
+                _context.SaveChanges();
+            }
         }
 
     }
