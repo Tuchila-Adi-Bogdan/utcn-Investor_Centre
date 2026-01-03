@@ -41,7 +41,29 @@ namespace InvestorCenter.Controllers
             }
             return View(newArticle);
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult ManageNews()
+        {
+            var articles = _context.NewsArticles.OrderByDescending(a => a.PublishedDate).ToList();
+            return View(articles);
+        }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            var article = _context.NewsArticles.Find(id);
+            if (article != null)
+            {
+                // Optional: Also delete associated StockEffects if you want to clean up completely
+                var effects = _context.StockEffects.Where(e => e.NewsArticleId == id);
+                _context.StockEffects.RemoveRange(effects);
+
+                _context.NewsArticles.Remove(article);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ManageNews");
+        }
         public void parseForEffects(NewsArticle article)
         {
             if (article == null) return;
