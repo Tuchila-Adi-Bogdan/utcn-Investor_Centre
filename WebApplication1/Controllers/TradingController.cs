@@ -29,6 +29,54 @@ namespace InvestorCenter.Controllers
             return View(history);
         }
 
+        [Authorize(Roles = "Admin")]
+        public IActionResult ManageStocks()
+        {
+            var stocks = _context.Stocks.ToList();
+            return View(stocks);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditStockPage(int id)
+        {
+            var stock = _context.Stocks.Find(id);
+            if (stock != null)
+                return View(stock);
+            else
+                return NotFound();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Edit(int id, Stock stock)
+        {
+            if (id != stock.Id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Stocks.Update(stock);
+                _context.SaveChanges();
+                return RedirectToAction("ManageStocks");
+            }
+            return View(stock);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            var stock = _context.Stocks.Find(id);
+            if (stock != null)
+            {
+                _context.Stocks.Remove(stock);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ManageStocks");
+        }
+
         public async Task<IActionResult> Index()
         {
             var stocks = await _context.Stocks.ToListAsync();
