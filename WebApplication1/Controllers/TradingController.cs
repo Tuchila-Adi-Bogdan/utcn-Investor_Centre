@@ -1,18 +1,22 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using InvestorCenter.Areas.Identity.Data;
 using InvestorCenter.Data;
 using InvestorCenter.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace InvestorCenter.Controllers
 {
     public class TradingController : Controller
     {
         private readonly InvestorCenterContext _context;
+        private readonly UserManager<InvestorCenterUser> _userManager;
 
-        public TradingController(InvestorCenterContext context)
+        public TradingController(InvestorCenterContext context, UserManager<InvestorCenterUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public async Task<IActionResult> Details(int id)
         {
@@ -77,6 +81,99 @@ namespace InvestorCenter.Controllers
             return RedirectToAction("ManageStocks");
         }
 
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Buy(int stockId, int quantity)
+        {
+            if (quantity <= 0) return RedirectToAction("Index");
+
+            var user = await _userManager.GetUserAsync(User);
+            var stock = await _context.Stocks.FindAsync(stockId);
+
+            if (stock == null) return NotFound();
+
+            decimal totalCost = stock.Price * quantity;
+
+            // 1. Check if user has enough money
+            if (user.Balance < totalCost)
+            {
+                TempData["Error"] = "Insufficient funds!";
+                return RedirectToAction("Details", "Trading", new { id = stockId });
+            }
+
+            // 2. Deduct money
+            user.Balance -= totalCost;
+
+            // 3. Add stock to portfolio
+            var portfolioItem = _context.PortfolioItems
+                .FirstOrDefault(p => p.UserId == user.Id && p.StockId == stockId);
+
+            if (portfolioItem == null)
+            {
+                // First time buying this stock
+                portfolioItem = new PortfolioItem
+                {
+                    UserId = user.Id,
+                    StockId = stockId,
+                    Quantity = quantity,
+                    AveragePrice = stock.Price
+                };
+                _context.PortfolioItems.Add(portfolioItem);
+            }
+            else
+            {
+                // Already owns it, update quantity and average price
+                // New Avg = ((OldQty * OldAvg) + (NewQty * NewPrice)) / TotalQty
+                decimal currentValue = portfolioItem.Quantity * portfolioItem.AveragePrice;
+                decimal newValue = quantity * stock.Price;
+                portfolioItem.AveragePrice = (currentValue + newValue) / (portfolioItem.Quantity + quantity);
+                portfolioItem.Quantity += quantity;
+            }
+
+            await _context.SaveChangesAsync();
+            TempData["Success"] = $"Successfully bought {quantity} shares of {stock.Ticker}";
+
+            return RedirectToAction("Index", "Portfolio");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Sell(int stockId, int quantity)
+        {
+            if (quantity <= 0) return RedirectToAction("Index");
+
+            var user = await _userManager.GetUserAsync(User);
+            var stock = await _context.Stocks.FindAsync(stockId);
+
+            // 1. Check if user owns the stock
+            var portfolioItem = _context.PortfolioItems
+                .FirstOrDefault(p => p.UserId == user.Id && p.StockId == stockId);
+
+            if (portfolioItem == null || portfolioItem.Quantity < quantity)
+            {
+                TempData["Error"] = "You don't own enough shares to sell.";
+                return RedirectToAction("Details", "Trading", new { id = stockId });
+            }
+
+            // 2. Calculate revenue
+            decimal revenue = stock.Price * quantity;
+
+            // 3. Add money to user
+            user.Balance += revenue;
+
+            // 4. Remove stock from portfolio
+            portfolioItem.Quantity -= quantity;
+
+            if (portfolioItem.Quantity == 0)
+            {
+                _context.PortfolioItems.Remove(portfolioItem);
+            }
+
+            await _context.SaveChangesAsync();
+            TempData["Success"] = $"Successfully sold {quantity} shares of {stock.Ticker}";
+
+            return RedirectToAction("Index", "Portfolio");
+        }
         public async Task<IActionResult> Index()
         {
             var stocks = await _context.Stocks.ToListAsync();

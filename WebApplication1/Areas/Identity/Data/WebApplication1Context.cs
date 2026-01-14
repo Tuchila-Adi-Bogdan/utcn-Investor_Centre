@@ -16,6 +16,7 @@ public class InvestorCenterContext : IdentityDbContext<InvestorCenterUser>
     public DbSet<NewsArticle> NewsArticles { get; set; }
     public DbSet<StockEffect> StockEffects { get; set; }
     public DbSet<PriceHistory> PriceHistories { get; set; }
+    public DbSet<PortfolioItem> PortfolioItems { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

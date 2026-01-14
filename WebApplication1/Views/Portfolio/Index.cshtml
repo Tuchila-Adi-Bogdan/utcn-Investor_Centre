@@ -1,5 +1,161 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using InvestorCenter.Models
+@model List<PortfolioItem>
 @{
+    ViewData["Title"] = "My Portfolio";
+    var recentHistory = ViewBag.RecentHistory as Dictionary<int, List<PriceHistory>>;
+    var percentageChanges = ViewBag.PercentageChanges as Dictionary<int, decimal>;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        You don't own any stocks yet. <a asp-action="Index">Go to the Trading Floor</a> to buy some!
+    </div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Ticker</th>
+                <th>Company</th>
+                <th>Quantity</th>
+                <th>Current Price</th>
+                <th>Total Value</th>
+                <th>Chart</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var stock = item.Stock;
+                /* Handle cases where history might be missing for a newly bought stock */
+                var hasChange = percentageChanges != null && percentageChanges.ContainsKey(stock.Id);
+                var changeVal = hasChange ? percentageChanges[stock.Id] : 0m;
+
+                <tr>
+                    <td><a asp-controller="Trading" asp-action="Details" asp-route-id="@stock.Id">@stock.Ticker</a></td>
+                    <td>
+                        @stock.CompanyName
+                        <span id="change-@stock.Id" class="@(changeVal >= 0 ? "text-success" : "text-danger")" style="font-size: 0.85em;">
+                            (@(changeVal.ToString("F2"))%)
+                        </span>
+                    </td>
+
+                    <td id="qty-@stock.Id" data-qty="@item.Quantity">
+                        @item.Quantity
+                    </td>
+
+                    <td id="price-@stock.Id">@stock.Price.ToString("C")</td>
+
+                    <td id="total-@stock.Id" class="fw-bold">
+                        @((stock.Price * item.Quantity).ToString("C"))
+                    </td>
+
+                    <td>
+                        <div style="width: 150px;">
+                            <a asp-action="Details" asp-route-id="@stock.Id">
+                                <canvas id="chart-@stock.Id" height="50"></canvas>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const charts = {};
+            // Safely serialize data even if null
+            const allHistoryData = @Html.Raw(Json.Serialize(recentHistory ?? new Dictionary<int, List<PriceHistory>>()));
+
+            function updateStockData(stockId, newPrice, historyArray, percentChange) {
+                // 1. Update Price
+                const priceCell = document.getElementById('price-' + stockId);
+                if (priceCell) {
+                    priceCell.textContent = '$' + newPrice.toFixed(2);
+                }
+
+                // 2. Update Total Value (Quantity * New Price)
+                const qtyCell = document.getElementById('qty-' + stockId);
+                const totalCell = document.getElementById('total-' + stockId);
+                if (qtyCell && totalCell) {
+                    const qty = parseInt(qtyCell.getAttribute('data-qty'));
+                    const totalVal = qty * newPrice;
+                    totalCell.textContent = '$' + totalVal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'); // Format currency
+                }
+
+                // 3. Update Percentage Color/Text
+                const changeSpan = document.getElementById('change-' + stockId);
+                if (changeSpan) {
+                    changeSpan.textContent = `(${percentChange.toFixed(2)}%)`;
+                    changeSpan.className = percentChange >= 0 ? 'text-success' : 'text-danger';
+                }
+
+                // 4. Update Chart
+                const chart = charts[stockId];
+                if (chart && historyArray) {
+                    const prices = historyArray.map(h => h.price);
+                    chart.data.datasets[0].data = prices;
+                    chart.data.datasets[0].borderColor = prices[prices.length - 1] >= prices[0] ? 'green' : 'red';
+                    chart.update('none'); // 'none' mode prevents full animation re-render for performance
+                }
+            }
+
+            // Initialize Charts
+            @foreach (var item in Model)
+            {
+                    <text>
+                        (function() { // Wrap in IIFE to keep variables local
+                            var stockId = @item.Stock.Id;
+                            var canvas = document.getElementById('chart-' + stockId);
+                            var historyForStock = allHistoryData[stockId];
+
+                            if (canvas && historyForStock) {
+                                const prices = historyForStock.map(h => h.price);
+                                charts[stockId] = new Chart(canvas, {
+                                    type: 'line',
+                                    data: {
+                                        labels: Array(prices.length).fill(''),
+                                        datasets: [{
+                                            data: prices,
+                                            borderColor: prices[prices.length - 1] >= prices[0] ? 'green' : 'red',
+                                            borderWidth: 2,
+                                            pointRadius: 0,
+                                            fill: false,
+                                            tension: 0.1
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                                        scales: { x: { display: false }, y: { display: false } }
+                                    }
+                                });
+                            }
+                        })();
+                    </text>
+            }
+
+            // SignalR Connection
+            const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
+
+            connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {
+                // Only update if this stock exists on the page
+                if (document.getElementById('price-' + stockId)) {
+                    updateStockData(stockId, newPrice, newHistory, percentChange);
+                }
+            });
+
+            connection.start().catch(err => console.error(err.toString()));
+        });
+    </script>
 }

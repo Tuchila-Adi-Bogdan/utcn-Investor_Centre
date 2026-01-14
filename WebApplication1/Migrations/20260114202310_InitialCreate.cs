@@ -225,6 +225,28 @@ namespace InvestorCenter.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PortfolioItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    StockId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    AveragePrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PortfolioItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PortfolioItems_Stocks_StockId",
+                        column: x => x.StockId,
+                        principalTable: "Stocks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -263,6 +285,11 @@ namespace InvestorCenter.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_PortfolioItems_StockId",
+                table: "PortfolioItems",
+                column: "StockId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StockEffects_NewsArticleId",
                 table: "StockEffects",
                 column: "NewsArticleId");
@@ -287,19 +314,22 @@ namespace InvestorCenter.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PortfolioItems");
+
+            migrationBuilder.DropTable(
                 name: "PriceHistories");
 
             migrationBuilder.DropTable(
                 name: "StockEffects");
 
             migrationBuilder.DropTable(
-                name: "Stocks");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Stocks");
 
             migrationBuilder.DropTable(
                 name: "NewsArticles");

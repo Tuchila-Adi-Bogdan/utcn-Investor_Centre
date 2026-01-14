@@ -1,47 +1,123 @@
-﻿@model List<PriceHistory>
+﻿@using Microsoft.AspNetCore.Identity
+@using InvestorCenter.Models
+@using InvestorCenter.Areas.Identity.Data  
+@inject SignInManager<InvestorCenterUser> SignInManager
+@inject UserManager<InvestorCenterUser> UserManager
+
+@model List<PriceHistory>
 @{
     var stock = ViewData["Stock"] as Stock;
     ViewData["Title"] = $"{stock.CompanyName} ({stock.Ticker})";
 }
 
-<h1>@stock.CompanyName (@stock.Ticker)</h1>
-<h3>Current Price: <span id="current-price">@stock.Price.ToString("C")</span></h3>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1>@stock.CompanyName (@stock.Ticker)</h1>
+            <h3>Current Price: <span id="current-price" class="text-success">@stock.Price.ToString("C")</span></h3>
+        </div>
 
-<div class="mb-2">
-    <button class="btn btn-outline-primary btn-sm" data-range="1min">1min</button>
-    <button class="btn btn-outline-primary btn-sm" data-range="5min">5min</button>
-    <button class="btn btn-outline-primary btn-sm" data-range="10min">10min</button>
-    <button class="btn btn-outline-primary btn-sm" data-range="1hour">1hour</button>
-    <button class="btn btn-outline-primary btn-sm" data-range="1day">1day</button>
-    <button class="btn btn-outline-primary btn-sm" data-range="1week">1week</button>
-    <button class="btn btn-outline-primary btn-sm" data-range="1month">1month</button>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            var user = await UserManager.GetUserAsync(User);
+            <div class="text-end">
+                <h5>Your Balance: <span class="badge bg-secondary">@user?.Balance.ToString("C")</span></h5>
+            </div>
+        }
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="mb-2">
+        <button class="btn btn-outline-primary btn-sm" data-range="1min">1min</button>
+        <button class="btn btn-outline-primary btn-sm" data-range="5min">5min</button>
+        <button class="btn btn-outline-primary btn-sm" data-range="10min">10min</button>
+        <button class="btn btn-outline-primary btn-sm" data-range="1hour">1hour</button>
+        <button class="btn btn-outline-primary btn-sm" data-range="1day">1day</button>
+        <button class="btn btn-outline-primary btn-sm" data-range="1week">1week</button>
+        <button class="btn btn-outline-primary btn-sm" data-range="1month">1month</button>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <canvas id="priceChart" style="max-height: 400px;"></canvas>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-light">
+            <strong>Trade @stock.Ticker</strong>
+        </div>
+        <div class="card-body">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div class="row">
+                    <div class="col-md-6 border-end">
+                        <h5 class="text-success">Buy Shares</h5>
+                        <form asp-controller="Trading" asp-action="Buy" method="post" class="row g-3">
+                            <input type="hidden" name="stockId" value="@stock.Id" />
+                            <div class="col-auto">
+                                <label class="visually-hidden">Quantity</label>
+                                <input type="number" name="quantity" class="form-control" placeholder="Qty" value="1" min="1" required>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-success mb-3">Buy @stock.Ticker</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6 ps-md-4">
+                        <h5 class="text-danger">Sell Shares</h5>
+                        <form asp-controller="Trading" asp-action="Sell" method="post" class="row g-3">
+                            <input type="hidden" name="stockId" value="@stock.Id" />
+                            <div class="col-auto">
+                                <label class="visually-hidden">Quantity</label>
+                                <input type="number" name="quantity" class="form-control" placeholder="Qty" value="1" min="1" required>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-danger mb-3">Sell @stock.Ticker</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-4">
+                    <h4>Please <a asp-area="Identity" asp-page="/Account/Login">Login</a> to trade stocks.</h4>
+                </div>
+            }
+        </div>
+    </div>
 </div>
-
-<div>
-    <canvas id="priceChart"></canvas>
-</div>
-
-@* <div class="ButtonsBuySell">
-    <button class="btn btn btn-outline-primary btn-Buy">Buy</button>
-    <button class="btn btn btn-outline-primary btn-Sell">Sell</button>
-</div> *@
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script>
-
         let priceChart;
         const currentPageStockId = @stock.Id;
         let currentRange = "1min";
 
         async function fetchAndUpdateChart(stockId, range) {
-            currentRange = range; // Set the current range
+            currentRange = range;
             const response = await fetch(`/Trading/GetHistoryData?stockId=${stockId}&range=${range}`);
             const data = await response.json();
 
             if (priceChart) {
-                // Update the chart with the new data
                 priceChart.data.labels = data.map(h => new Date(h.timestamp).toLocaleString());
                 priceChart.data.datasets[0].data = data.map(h => h.price);
                 priceChart.update();
@@ -49,44 +125,48 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-        const ctx = document.getElementById('priceChart');
+            const ctx = document.getElementById('priceChart');
 
-        document.querySelectorAll("button[data-range]").forEach(button => {
+            document.querySelectorAll("button[data-range]").forEach(button => {
                 button.addEventListener("click", function() {
                     fetchAndUpdateChart(currentPageStockId, this.dataset.range);
                 });
             });
 
-        const historyData = @Html.Raw(Json.Serialize(Model.Select(h => h.Price)));
-        const historyLabels = @Html.Raw(Json.Serialize(Model.Select(h => new DateTime(h.Timestamp.Ticks).ToLocalTime().ToShortTimeString())));
+            // Handle Empty History Edge Case
+            const rawHistoryData = @Html.Raw(Json.Serialize(Model.Select(h => h.Price)));
+            const rawHistoryLabels = @Html.Raw(Json.Serialize(Model.Select(h => new DateTime(h.Timestamp.Ticks).ToLocalTime().ToShortTimeString())));
 
-        priceChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: historyLabels,
-                datasets: [{
-                    label: 'Price (USD)',
-                    data: historyData,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: rawHistoryLabels,
+                    datasets: [{
+                        label: 'Price (USD)',
+                        data: rawHistoryData,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: false }
                     }
                 }
-            }
-        });
-        const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
+            });
+
+            const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
 
             connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {
                 if (stockId === currentPageStockId) {
-
                     const priceHeader = document.getElementById('current-price');
                     if (priceHeader) {
                         priceHeader.textContent = '$' + newPrice.toFixed(2);
+
+                        // Optional: Change color based on movement
+                        priceHeader.className = percentChange >= 0 ? "text-success" : "text-danger";
                     }
 
                     if (priceChart && currentRange === "1min") {

@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InvestorCenter.Migrations
 {
     [DbContext(typeof(InvestorCenterContext))]
-    [Migration("20260103213646_InitialCreate")]
+    [Migration("20260114202310_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.11");
 
             modelBuilder.Entity("InvestorCenter.Areas.Identity.Data.InvestorCenterUser", b =>
                 {
@@ -110,6 +110,32 @@ namespace InvestorCenter.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("NewsArticles");
+                });
+
+            modelBuilder.Entity("InvestorCenter.Models.PortfolioItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("AveragePrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StockId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StockId");
+
+                    b.ToTable("PortfolioItems");
                 });
 
             modelBuilder.Entity("InvestorCenter.Models.PriceHistory", b =>
@@ -310,6 +336,17 @@ namespace InvestorCenter.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("InvestorCenter.Models.PortfolioItem", b =>
+                {
+                    b.HasOne("InvestorCenter.Models.Stock", "Stock")
+                        .WithMany()
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Stock");
                 });
 
             modelBuilder.Entity("InvestorCenter.Models.StockEffect", b =>

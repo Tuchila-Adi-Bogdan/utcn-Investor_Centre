@@ -4,6 +4,8 @@ using InvestorCenter.Areas.Identity.Data;
 using InvestorCenter.Data;
 using InvestorCenter.Hubs;
 using InvestorCenter.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("InvestorCenterContextConnection") ?? throw new InvalidOperationException("Connection string 'InvestorCenterContextConnection' not found.");;
@@ -44,6 +46,16 @@ app.MapStaticAssets();
 app.MapRazorPages();
 
 app.MapHub<StockHub>("/stockHub");
+
+//Force $
+var defaultCulture = new CultureInfo("en-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(defaultCulture),
+    SupportedCultures = new List<CultureInfo> { defaultCulture },
+    SupportedUICultures = new List<CultureInfo> { defaultCulture }
+};
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "default",
