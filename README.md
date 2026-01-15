@@ -20,7 +20,7 @@
     <a href="https://github.com/Tuchila-Adi-Bogdan/utcn-Investor_Centre/tree/main/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <label> Not deployed yet</label>
+    <label> Not deployed anywhere</label>
     <!-- <a href="https://github.com/Tuchila-Adi-Bogdan/utcn-Investor_Centre">View Demo</a> -->
     &middot;
     <a href="https://github.com/Tuchila-Adi-Bogdan/utcn-Investor_Centre/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
@@ -59,7 +59,7 @@ EN: A market-type website where users can buy/sell stocks, with prices that fluc
 ### Built With
 
 [![ASP.NET][ASP.NET]][ASP.NET-url]
-
+L
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -76,10 +76,10 @@ Admin users get some more options like adding stocks, news and triggering certai
 - [x] Stocks Tab
     - [x] Invidiual Stock Details
 - [x] Wallet
-- [ ] Buy/Sell Stocks
-- [ ] News Effects
-- [ ] Owned Stocks Page
-- [ ] Better checks when admin adds stocks/news
+- [x] Buy/Sell Stocks
+- [x] News Effects
+- [x] Owned Stocks Page
+- [x] Better checks when admin adds stocks/news
 
 <!-- CONTACT -->
 ## Contact
