@@ -94,23 +94,19 @@ namespace InvestorCenter.Controllers
 
             decimal totalCost = stock.Price * quantity;
 
-            // 1. Check if user has enough money
             if (user.Balance < totalCost)
             {
                 TempData["Error"] = "Insufficient funds!";
                 return RedirectToAction("Details", "Trading", new { id = stockId });
             }
 
-            // 2. Deduct money
             user.Balance -= totalCost;
 
-            // 3. Add stock to portfolio
             var portfolioItem = _context.PortfolioItems
                 .FirstOrDefault(p => p.UserId == user.Id && p.StockId == stockId);
 
             if (portfolioItem == null)
             {
-                // First time buying this stock
                 portfolioItem = new PortfolioItem
                 {
                     UserId = user.Id,
@@ -122,8 +118,6 @@ namespace InvestorCenter.Controllers
             }
             else
             {
-                // Already owns it, update quantity and average price
-                // New Avg = ((OldQty * OldAvg) + (NewQty * NewPrice)) / TotalQty
                 decimal currentValue = portfolioItem.Quantity * portfolioItem.AveragePrice;
                 decimal newValue = quantity * stock.Price;
                 portfolioItem.AveragePrice = (currentValue + newValue) / (portfolioItem.Quantity + quantity);
@@ -145,7 +139,6 @@ namespace InvestorCenter.Controllers
             var user = await _userManager.GetUserAsync(User);
             var stock = await _context.Stocks.FindAsync(stockId);
 
-            // 1. Check if user owns the stock
             var portfolioItem = _context.PortfolioItems
                 .FirstOrDefault(p => p.UserId == user.Id && p.StockId == stockId);
 
@@ -155,13 +148,10 @@ namespace InvestorCenter.Controllers
                 return RedirectToAction("Details", "Trading", new { id = stockId });
             }
 
-            // 2. Calculate revenue
             decimal revenue = stock.Price * quantity;
 
-            // 3. Add money to user
             user.Balance += revenue;
 
-            // 4. Remove stock from portfolio
             portfolioItem.Quantity -= quantity;
 
             if (portfolioItem.Quantity == 0)
@@ -178,18 +168,16 @@ namespace InvestorCenter.Controllers
         {
             var stocks = await _context.Stocks.ToListAsync();
 
-            // 1. Fetch recent raw data from the database (e.g., last hour)
             var recentHistoryRaw = await _context.PriceHistories
                 .Where(p => p.Timestamp > DateTime.UtcNow.AddHours(-1))
                 .OrderByDescending(p => p.Timestamp)
                 .ToListAsync();
 
-            // 2. Group and process the data in your application's memory
             var recentHistory = recentHistoryRaw
                 .GroupBy(p => p.StockId)
                 .ToDictionary(
                     g => g.Key,
-                    g => g.Take(10).OrderBy(p => p.Timestamp).ToList() // Take the 10 most recent points
+                    g => g.Take(10).OrderBy(p => p.Timestamp).ToList()
                 );
 
             var percentageChanges = new Dictionary<int, decimal>();
@@ -198,7 +186,7 @@ namespace InvestorCenter.Controllers
                 var historyPoints = stockGroup.Value;
                 if (historyPoints.Count >= 2)
                 {
-                    var lastPrice = historyPoints[^1].Price; // C# 8 index from end
+                    var lastPrice = historyPoints[^1].Price;
                     var previousPrice = historyPoints[^2].Price;
                     if (previousPrice != 0)
                     {

@@ -27,13 +27,13 @@ public class HomeController : Controller
             .Take(3)
             .ToListAsync();
 
-        // 1. Fetch recent raw data from the database (e.g., last hour)
+        // Fetch recent raw data from the database
         var recentHistoryRaw = await _context.PriceHistories
             .Where(p => p.Timestamp > DateTime.UtcNow.AddHours(-1))
             .OrderByDescending(p => p.Timestamp)
             .ToListAsync();
 
-        // 2. Group and process the data in your application's memory
+        // Group and process the data
         var recentHistory = recentHistoryRaw
             .GroupBy(p => p.StockId)
             .ToDictionary(
@@ -47,7 +47,7 @@ public class HomeController : Controller
             var historyPoints = stockGroup.Value;
             if (historyPoints.Count >= 2)
             {
-                var lastPrice = historyPoints[^1].Price; // C# 8 index from end
+                var lastPrice = historyPoints[^1].Price;
                 var previousPrice = historyPoints[^2].Price;
                 if (previousPrice != 0)
                 {

@@ -6,16 +6,16 @@ namespace InvestorCenter.Models
     {
         public int Id { get; set; }
 
-        // Link to the User
+        // FK the User
         public string UserId { get; set; }
 
-        // Link to the Stock
+        // FK to the Stock
         public int StockId { get; set; }
-        public Stock Stock { get; set; } // Navigation property
+        public Stock Stock { get; set; }
 
         public int Quantity { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal AveragePrice { get; set; } // Optional: To track profit/loss later
+        public decimal AveragePrice { get; set; }
     }
 }

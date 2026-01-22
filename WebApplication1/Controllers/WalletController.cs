@@ -3,30 +3,27 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using InvestorCenter.Areas.Identity.Data;
 
-[Authorize] // Ensures only logged-in users can access this
+[Authorize]
 public class WalletController : Controller
 {
     private readonly UserManager<InvestorCenterUser> _userManager;
 
-    // Inject UserManager to get the current user
+    // Dependency Injection
     public WalletController(UserManager<InvestorCenterUser> userManager)
     {
         _userManager = userManager;
     }
 
-    // GET: /Wallet/Index
+
     public async Task<IActionResult> Index()
     {
-        // Get the currently logged-in user
         var user = await _userManager.GetUserAsync(User);
 
-        // Pass the user's balance to the view
         ViewBag.Balance = user.Balance;
 
         return View();
     }
 
-    // POST: /Wallet/AddMoney
     [HttpPost]
     public async Task<IActionResult> AddMoney(decimal amount)
     {
@@ -39,7 +36,6 @@ public class WalletController : Controller
         return RedirectToAction("Index");
     }
 
-    // POST: /Wallet/WithdrawMoney
     [HttpPost]
     public async Task<IActionResult> WithdrawMoney(decimal amount)
     {
@@ -51,7 +47,7 @@ public class WalletController : Controller
         }
         else if (amount > user.Balance)
         {
-            // Use TempData to show an error message on the view
+
             TempData["ErrorMessage"] = "Insufficient funds.";
         }
         else

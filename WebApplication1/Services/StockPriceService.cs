@@ -29,8 +29,6 @@ public class StockPriceService : BackgroundService
                 var random = new Random();
 
                 // FETCH ACTIVE EFFECTS
-                // Get all effects that have NOT expired yet.
-                // AsNoTracking is faster for read-only data.
                 var activeEffects = await context.StockEffects
                     .AsNoTracking()
                     .Where(e => e.ExpirationDate > DateTime.UtcNow)

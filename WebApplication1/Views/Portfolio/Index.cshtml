@@ -31,7 +31,6 @@ else
             @foreach (var item in Model)
             {
                 var stock = item.Stock;
-                /* Handle cases where history might be missing for a newly bought stock */
                 var hasChange = percentageChanges != null && percentageChanges.ContainsKey(stock.Id);
                 var changeVal = hasChange ? percentageChanges[stock.Id] : 0m;
 
@@ -77,13 +76,13 @@ else
             const allHistoryData = @Html.Raw(Json.Serialize(recentHistory ?? new Dictionary<int, List<PriceHistory>>()));
 
             function updateStockData(stockId, newPrice, historyArray, percentChange) {
-                // 1. Update Price
+                // Update Price
                 const priceCell = document.getElementById('price-' + stockId);
                 if (priceCell) {
                     priceCell.textContent = '$' + newPrice.toFixed(2);
                 }
 
-                // 2. Update Total Value (Quantity * New Price)
+                // Update Total Value (Quantity * New Price)
                 const qtyCell = document.getElementById('qty-' + stockId);
                 const totalCell = document.getElementById('total-' + stockId);
                 if (qtyCell && totalCell) {
@@ -92,20 +91,20 @@ else
                     totalCell.textContent = '$' + totalVal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'); // Format currency
                 }
 
-                // 3. Update Percentage Color/Text
+                // Update Percentage Color/Text
                 const changeSpan = document.getElementById('change-' + stockId);
                 if (changeSpan) {
                     changeSpan.textContent = `(${percentChange.toFixed(2)}%)`;
                     changeSpan.className = percentChange >= 0 ? 'text-success' : 'text-danger';
                 }
 
-                // 4. Update Chart
+                // Update Chart
                 const chart = charts[stockId];
                 if (chart && historyArray) {
                     const prices = historyArray.map(h => h.price);
                     chart.data.datasets[0].data = prices;
                     chart.data.datasets[0].borderColor = prices[prices.length - 1] >= prices[0] ? 'green' : 'red';
-                    chart.update('none'); // 'none' mode prevents full animation re-render for performance
+                    chart.update('none');
                 }
             }
 
@@ -113,7 +112,7 @@ else
             @foreach (var item in Model)
             {
                     <text>
-                        (function() { // Wrap in IIFE to keep variables local
+                        (function() { 
                             var stockId = @item.Stock.Id;
                             var canvas = document.getElementById('chart-' + stockId);
                             var historyForStock = allHistoryData[stockId];
@@ -149,7 +148,6 @@ else
             const connection = new signalR.HubConnectionBuilder().withUrl("/stockHub").build();
 
             connection.on("ReceivePriceUpdate", function (stockId, newPrice, newHistory, percentChange) {
-                // Only update if this stock exists on the page
                 if (document.getElementById('price-' + stockId)) {
                     updateStockData(stockId, newPrice, newHistory, percentChange);
                 }

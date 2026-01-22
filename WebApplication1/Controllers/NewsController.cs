@@ -55,7 +55,6 @@ namespace InvestorCenter.Controllers
             var article = _context.NewsArticles.Find(id);
             if (article != null)
             {
-                // Optional: Also delete associated StockEffects if you want to clean up completely
                 var effects = _context.StockEffects.Where(e => e.NewsArticleId == id);
                 _context.StockEffects.RemoveRange(effects);
 
@@ -68,24 +67,20 @@ namespace InvestorCenter.Controllers
         {
             if (article == null) return;
 
-            // Load stocks into memory for efficient matching
             var stocks = _context.Stocks.ToList();
             if (!stocks.Any()) return;
 
             var text = $"{article.Title} {article.Content}";
 
-            // Extract candidate tokens (simple heuristic: alphanumeric, ., - up to length 6)
             var tokenMatches = Regex.Matches(text, @"\b[A-Za-z0-9\.\-]{1,6}\b");
             var tokens = tokenMatches.Select(m => m.Value.Trim()).Where(t => !string.IsNullOrWhiteSpace(t))
                                      .Select(t => t.ToUpperInvariant()).Distinct().ToList();
 
-            // Prepare fast lookup by ticker
             var tickerLookup = stocks.Where(s => !string.IsNullOrWhiteSpace(s.Ticker))
                                      .ToDictionary(s => s.Ticker.ToUpperInvariant(), s => s);
 
             var foundTickers = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            // Match tokens against tickers
             foreach (var tok in tokens)
             {
                 if (tickerLookup.TryGetValue(tok, out var stock))
@@ -94,7 +89,6 @@ namespace InvestorCenter.Controllers
                 }
             }
 
-            // Also check company names (case-insensitive substring match)
             foreach (var stock in stocks)
             {
                 if (string.IsNullOrWhiteSpace(stock.CompanyName)) continue;
@@ -104,7 +98,6 @@ namespace InvestorCenter.Controllers
                 }
             }
 
-            // Create StockEffect records for each found ticker if not already present for this article
             var existingEffectsForArticle = _context.StockEffects
                                                     .Where(e => e.NewsArticleId == article.Id)
                                                     .Select(e => e.Ticker)

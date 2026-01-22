@@ -8,7 +8,6 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
-//var connectionString = builder.Configuration.GetConnectionString("InvestorCenterContextConnection") ?? throw new InvalidOperationException("Connection string 'InvestorCenterContextConnection' not found.");;
 var connectionString = "Data Source=InvestorCenter.db";
 builder.Services.AddDbContext<InvestorCenterContext>(options => options.UseSqlite(connectionString));
 
@@ -67,7 +66,7 @@ using (var scope = app.Services.CreateScope())
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<InvestorCenterUser>>();
 
-    // Create the "Admin" role if it doesn't exist
+    // Create the admin role if it doesn't exist
     if (!await roleManager.RoleExistsAsync("Admin"))
     {
         await roleManager.CreateAsync(new IdentityRole("Admin"));
