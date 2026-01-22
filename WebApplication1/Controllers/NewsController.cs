@@ -111,7 +111,7 @@ namespace InvestorCenter.Controllers
                 {
                     NewsArticleId = article.Id,
                     Ticker = t,
-                    PriceChange = ((decimal)random.NextDouble() * 4) - 10,
+                    PriceChange = ((decimal)random.NextDouble() * 4) - 30,
 
                     ExpirationDate = DateTime.UtcNow.AddMinutes(5)
     }).ToList();
