@@ -1,24 +1,12 @@
 <!-- https://github.com/othneildrew/Best-README-Template -->
 <a id="readme-top"></a>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/Tuchila-Adi-Bogdan/utcn-Investor_Centre">
-    <img src="media/Welcome to the investor Center.png" alt="Logo" width="80" height="80">
-  </a>
-
 <h3 align="center">Investor Center</h3>
 
   <p align="center">
     Un site de tip market unde utilizatorii pot cumpăra/vinde acțiuni, cu preț care fluctuează în timp real. Implementat cu ASP.NET.
     <br />
     Pentru materia IS (inginerie softare). 
-    <br />
-    <a href="https://github.com/Tuchila-Adi-Bogdan/utcn-Investor_Centre/tree/main/docs"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <label> Nu e deployed.</label>
     <!-- <a href="https://github.com/Tuchila-Adi-Bogdan/utcn-Investor_Centre">View Demo</a> -->
@@ -34,13 +22,13 @@
 <!-- TABLE OF CONTENTS -->
 Cuprins
   
-1. Scurtă descriere a proiectului
-2. Limbaje și tehnologii folosite
-3. Cerințe funcționale
-4. Cerințe non-funcționale
-5. Design Pattern
-6. Roadmap
-7. Contact
+1. [Descrierea proiectului](#descrierea-proiectului)
+2. [Limbaje și tehnologii folosite](#limbaje-și-tehnologii-folosite)
+3. [Cerințe funcționale](#cerințe-funcționale)
+4. [Cerințe non-funcționale](#cerințe-non-funcționale)
+5. [Design Pattern](#design-pattern)
+6. [Roadmap](#roadmap)
+7. [Contact](#contact)
    
 <!-- ABOUT THE PROJECT -->
 ## Descrierea proiectului
@@ -135,7 +123,7 @@ Acestea definesc atributele de calitate, performanță și constrângerile tehni
   - Integritate Referențială: Baza de date (SQLite) folosește chei străine (Foreign Keys) pentru a lega Portofoliul de Utilizator și de Acțiuni, prevenind datele orfane.
 
 <!-- Design Pattern -->
-### Design Patterns
+### Design Pattern
 #### Exemplu: Dependency Injection (DI)
 Problema: Controller-ul are nevoie de acces la baza de date (context) și la sistemul de useri (userManager) pentru a funcționa. Abordarea greșită (fără pattern): Am fi scris: 
 ```
@@ -158,6 +146,7 @@ public class PortfolioController : Controller
     }
 }
 ```
+![image](docs/DependencyInjection.png)
 <!-- ROADMAP -->
 ## Roadmap
 
